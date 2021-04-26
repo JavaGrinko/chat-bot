@@ -3,6 +3,7 @@
         <title>Чат-бот Кузя</title>
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     </head>
     <body>
         <div class="wrapper">
@@ -15,8 +16,16 @@
                         Ведущий консультант
                     </div>
                 </div>
-                <div class="chat"></div>
-                <div class="reply"></div>
+                <div class="chat">
+                    <div class="messages" id="messages">
+                    </div>
+                </div>
+                <div class="reply">
+                    <div class="controls">
+                        <input type="text" id="text" class="input-text">
+                        <button id="submit" class="button-submit">Отправить</button>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

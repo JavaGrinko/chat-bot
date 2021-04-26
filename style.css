@@ -61,3 +61,40 @@ html, body {
     height: 100px;
     border-radius: 0 0 16px 16px;
 }
+
+.messages {
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.message {
+    background-color: blueviolet;
+    color: white;
+    padding: 8px;
+    width: fit-content;
+    border-radius: 8px 8px 0 8px;
+    margin: 8px 8px 8px auto;
+    font-size: 26px;
+}
+
+.answer {
+    background-color: yellowgreen;
+    border-radius: 8px 8px 8px 0;
+    margin: 8px auto 8px 8px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.input-text {
+    font-size: 26px;
+    margin-right: 16px;
+}
+
+.button-submit {
+    font-size: 26px;
+}
