@@ -29,6 +29,7 @@ window.onload = function() {
 const scenario = [
     {include: "привет", answer: "И вам доброго дня! О чем поговорим?"},
     {include: "как дела", answer: "Зарплата хорошая. Маленькая, но хорошая."},
+    {include: "как ты выглядишь", answer: "Вот моя фотка", image: "images/ava.jpg"},
     {include: "", answer: "К такому разговору меня жизнь не готовила"}
 ];
 
@@ -38,7 +39,8 @@ function robotAnswer(text) {
             if (text.toLowerCase().includes(s.include)) {
                 messages.push({
                     text: s.answer,
-                    author: "robot"
+                    author: "robot",
+                    image: s.image
                 });
                 break;
             }
@@ -59,7 +61,17 @@ function updateMessageList() {
             let div = document.createElement("div");
             div.classList.add("message");
             div.classList.add("answer");
-            div.innerHTML = m.text;
+            if (m.image) {
+                let img = new Image();
+                img.src = m.image;
+                img.classList.add("image");
+                div.appendChild(img);
+            }
+            if (m.text) {
+                let span = document.createElement("span");
+                span.innerText = m.text;
+                div.appendChild(span);
+            }
             messagesElement.appendChild(div);
         }
     });
