@@ -30,6 +30,7 @@ const scenario = [
     {include: "привет", answer: "И вам доброго дня! О чем поговорим?"},
     {include: "как дела", answer: "Зарплата хорошая. Маленькая, но хорошая."},
     {include: "как ты выглядишь", answer: "Вот моя фотка", image: "images/ava.jpg"},
+    {include: "спой песенку", answer: "Пожалуйста", audio: "audio/music.mp3"},
     {include: "", answer: "К такому разговору меня жизнь не готовила"}
 ];
 
@@ -40,7 +41,8 @@ function robotAnswer(text) {
                 messages.push({
                     text: s.answer,
                     author: "robot",
-                    image: s.image
+                    image: s.image,
+                    audio: s.audio
                 });
                 break;
             }
@@ -66,6 +68,12 @@ function updateMessageList() {
                 img.src = m.image;
                 img.classList.add("image");
                 div.appendChild(img);
+            }
+            if (m.audio) {
+                let audio = document.createElement("audio");
+                audio.src = m.audio;
+                audio.setAttribute("controls", "");
+                div.appendChild(audio);
             }
             if (m.text) {
                 let span = document.createElement("span");
