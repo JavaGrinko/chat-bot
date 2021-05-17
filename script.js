@@ -26,7 +26,23 @@ window.onload = function() {
     }
 }
 
+const context = {
+    // сюда будет сохраняться контекст беседы, факты
+}
+
 const scenario = [
+    {include: "мое имя", useContext: (message) => {
+        let name = message.split("мое имя")[1];
+        context.clientName = name; // сохраняем имя клиента в контекст
+        return "Хорошо, я запомню";
+    }},
+    {include: "как меня зовут", useContext: () => {
+        if (context.clientName) { //достаем имя из контекста, если оно там есть
+            return "Ваз зовут " + context.clientName; 
+        } else {
+            return "Я не знаю, вы еще не представились";
+        }
+    }},
     {include: "привет", answer: "И вам доброго дня! О чем поговорим?"},
     {include: "как дела", answer: "Зарплата хорошая. Маленькая, но хорошая."},
     {include: "как ты выглядишь", answer: "Вот моя фотка", image: "images/ava.jpg"},
@@ -38,12 +54,21 @@ function robotAnswer(text) {
     setTimeout(() => {
         for (let s of scenario) {
             if (text.toLowerCase().includes(s.include)) {
-                messages.push({
-                    text: s.answer,
-                    author: "robot",
-                    image: s.image,
-                    audio: s.audio
-                });
+                if (s.useContext) {
+                    messages.push({
+                        text: s.useContext(text),
+                        author: "robot",
+                        image: s.image,
+                        audio: s.audio
+                    });
+                } else {
+                    messages.push({
+                        text: s.answer,
+                        author: "robot",
+                        image: s.image,
+                        audio: s.audio
+                    });
+                }
                 break;
             }
         }
