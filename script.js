@@ -6,6 +6,8 @@ window.onload = function() {
     messagesElement = document.getElementById("messages");
     let submit = document.getElementById("submit");
     let textInput = document.getElementById("text");
+    let smileButton = document.getElementById("smile-button");
+    let smiles = document.getElementById("smiles");
     submit.onclick = function() {
         let text = textInput.value;
         if (text) {
@@ -22,6 +24,14 @@ window.onload = function() {
     textInput.onkeydown = function(event) {
         if (event.key === 'Enter') {
             submit.click();
+        }
+    }
+    closeSmiles();
+    smileButton.onclick = toggleSmiles;
+    for (let i = 0; i < smiles.children.length; i++) {
+        smiles.children[i].onclick = () => {
+            textInput.value += smiles.children[i].innerText;
+            closeSmiles();
         }
     }
 }
@@ -117,3 +127,15 @@ function updateScroll(){
     element.scrollTop = element.scrollHeight;
 }
 
+function toggleSmiles() {
+    if (document.getElementById("smiles").style.display === "none") {
+        document.getElementById("smiles").style.display = "flex";
+    } else {
+        document.getElementById("smiles").style.display = "none";
+    }
+    
+}
+
+function closeSmiles() {
+    document.getElementById("smiles").style.display = "none";
+}

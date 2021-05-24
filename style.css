@@ -100,3 +100,48 @@ html, body {
 .button-submit {
     font-size: 26px;
 }
+
+#smile-button::after {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    content: "😃";
+}
+
+#smile-button:hover::after {
+    content: "😫";
+}
+
+#smiles {
+    background-color: white;
+    position: absolute;
+    bottom: 70px;
+    left: 47px;
+    width: 200px;
+    height: 350px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.smile {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.smile:hover {
+    background-color: rgb(92, 149, 224);
+}
